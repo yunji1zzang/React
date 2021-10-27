@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Transforming Data</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Transforming Data</h1>
+<p>Open the Console</p>
+<script type="text/babel">
+
+    let schools = [
+        { name: "Yorktown"},
+        { name: "Stratford" },
+        { name: "Washington & Lee"},
+        { name: "Wakefield"}
+    ];
+
+    // 배열의 원소 중 하나만을 변경하는 순수 함수가 필요할 때도
+    // map을 사용할 수 있다.
+    // 본 예제는 원본 schools 배열을 변경하지 않으면서
+    // Stratford 라는 이름의 학교를 'HB Woodlawn'으로 바꾼다.
+    const editName = (oldName, name, arr) =>
+        arr.map(item => {
+            if (item.name === oldName) {
+                return {
+                    ...item,
+                    name
+                }
+            } else {
+                return item
+            }
+        });
+
+    let updatedSchools = editName("Stratford", "HB Woodlawn",
+        schools );
+
+    console.log( updatedSchools[1] );
+    // {name: 'HB Woodlawn'}
+    console.log( schools[1] );
+    // {name: 'Stratford'}
+
+</script>
+</body>
+</html>

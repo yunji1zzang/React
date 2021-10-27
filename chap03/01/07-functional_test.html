@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>What It Means to Be Functional</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Functional JavaScript</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+// 함수가 함수를 인자로 받는 경우와 함수가 함수를 반환하는 경우를
+// 고차함수라고 부른다.
+// creatScream 고차 함수를 화살표 함수로 표현할 수도 있다.
+const createScream = logger => message => {
+    logger(message.toUpperCase() + "!!!");
+};
+
+const scream = createScream(message => console.log(message));
+
+    scream('ES6에서는 더 간편하게 createScream을 만들 수 있습니다.');
+    // ES6에서는 더 간편하게 CREATESCREAM을 만들 수 있습니다.!!!
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Transforming Data</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Transforming Data</h1>
+<p>Open the Console</p>
+<script type="text/babel">
+
+    const schools = [
+      "Yorktown",
+      "Washington & Lee",
+      "Wakefield"
+    ];
+
+    // 이경우 map 함수로 각 학교 이름 뒤에 "High School"을 추가한다.
+    // 이때 원본 schools 배열은 아무 변화가 없다.
+    const highSchools = schools.map(school => `${school} High School`);
+
+    console.log(highSchools.join("\n"));
+    // Yorktown High School
+    // Washington & Lee High School
+    // Wakefield High School
+
+    console.log(schools.join("\n"));
+    // Yorktown
+    // Washington & Lee
+    // Wakefield
+</script>
+</body>
+</html>

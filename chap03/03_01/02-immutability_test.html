@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Immutability</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Immutability</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+    // 잔디 색을 표현하는 객체 생성
+    let color_lawn = {
+        title: "잔디",
+        color: "#00FF00",
+        rating: 0
+    };
+
+    var rateColor = function(color, rating){
+        return Object.assign({}, color, {rating:rating});
+    };
+
+    // Object.assign을 사용해 색의 평점을 바꿨다.
+    // 여기서 Object.assign은 복사기와 같다.
+    // Object.assign은 빈 객체를 받고, color 객체를 그 빈객체에
+    // 복사한 다음에,복사본에 있는 rating 프로퍼티의 값을
+    // rating 파라미터의 값으로 변경한다.
+    // 그렇게 우리는 원본은 그대로 남겨둔 채, rating만 변경된
+    // 복사본을 활용할 수 있게 되었다.
+    //즉, Object.assign으로 복사본을 만들어서 평점을 부여한다.
+    console.log(rateColor(color_lawn, 5).rating);  // 5
+    console.log(color_lawn.rating);  // 0
+
+</script>
+</body>
+</html>

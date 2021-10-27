@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Destructuring</title>
+    <!-- 구조분해는 (바벨 없이) 작동하지 않는다. -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    
+</head>
+<body>
+<h1>Destructuring</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+    // 배열 구조 분해(다른 예)
+    // 불필요한 값을 콤마(,)를 사용해 생략하는 리스트 매칭(list matching)을
+    // 사용할 수도 있다. 변수에 대입하지 않고 무시하고 싶은 원소의 위치에
+    // 콤마를 넣으면 리스트 매칭을 사용하는 것이다.
+    // 다음은 앞서 같은 배열에서 최초의 두 원소를 콤마로 대치한 예시이다.
+
+    const [ , , thirdAnimal] = ["캥거루", "웜뱃", "코알라"];
+
+    console.log(thirdAnimal); 
+    
+
+
+</script>
+</body>
+</html>

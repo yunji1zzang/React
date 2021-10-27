@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Pure Functions</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Pure Functions</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+    const frederick = {
+      name: "Frederick Douglass",
+      canRead: false,
+      canWrite: false
+    };
+
+    // selfEducate()는 여전히 순수 함수가 아니다.
+    // 부수 효과가 있으며, 이 함수를 호출하면 인수로 넘긴 객체의 필드가 바뀐다.
+
+    const selfEducate = (person) => {
+      person.canRead = true;
+      person.canWrite = true;
+      return person;
+    };
+
+
+    console.log( selfEducate(frederick) )
+    // {name: 'Frederick Douglass', canRead: true, canWrite: true}
+    console.log( frederick )
+    // {name: 'Frederick Douglass', canRead: true, canWrite: true}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Transforming Data</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Transforming Data</h1>
+<p>Open the Console</p>
+<script type="text/babel">
+
+    const schools = [
+      "Yorktown",
+      "Washington & Lee",
+      "Wakefield"
+    ];
+
+// 배열에서 원소를 제거해야 할 필요가 있다면
+// Array.pop이나 Array.splice 보다는 Array.filter를 사용하자.
+// Array.filter는 순수 함수다.
+// 다음의 cutSchool 함수는 특정 학교의 이름을 제외한
+// 새로운 배열을 반환한다.
+  const cutSchool = (cut, list) => 
+    list.filter(school => school !== cut);
+
+    console.log(cutSchool("Washington & Lee", schools).join(", "));
+    // Yorktown, Wakefield
+
+    console.log(schools.join("\n"));
+    // Yorktown
+    // Washington & Lee
+    // Wakefield
+</script>
+</body>
+</html>

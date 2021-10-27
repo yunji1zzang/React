@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Pure Functions</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Pure Functions</h1>
+<div id="react-container"></div>
+<script type="text/babel">
+
+   // 리액트에서는 UI를 순수 함수로 표현한다.
+   // Header는 머릿글을 만들어내느 순수 함수다.
+   // 다음 함수가 만들어내는 머릿글은 앞 예제에서 본
+   // 머리글과 똑같이 엘리먼트 하나로 구성된다.
+   // 하지만, 이 함수는 DOM을 변경하는 부수 효과를 발생시키지 않고
+   // 엘리먼트를 반환한다.
+   // 즉, 이 함수는 엘리먼트를 만드는 일만 책임지며,
+   // DOM을 변경하는 책임은 애플리케이션에서 담당하게 된다.
+   const Header = (props) => <h1>{props.title}</h1>
+   
+   ReactDOM.render(
+       <Header title = "React uses pure functions" />,
+       document.getElementById('react-container')
+   );
+
+</script>
+</body>
+</html>

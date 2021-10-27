@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Composition</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+  <h1>Composition</h1>
+  <p>Open the Console</p>
+<script type="text/babel">
+
+    const createClockTime = date => ({date})
+
+    const appendAMPM = ({date}) =>
+      ({
+          date,
+          ampm: (date.getHours() >= 12) ? "PM" : "AM"
+      })
+
+    const civilianHours = clockTime => {
+    const hours = clockTime.date.getHours()
+      return {
+        ...clockTime,
+        hours: (hours > 12) ?
+          hours - 12 :
+          hours
+      }
+    }
+
+    const removeDate = clockTime => {
+      let newTime = {...clockTime}
+      delete newTime.date
+      return newTime
+    }
+
+    // 더 우아하게 함수를 합성하는 방법
+    // compose는 여러 함수를 인자로 받아서 한 함수를 결과로 내놓는다.
+    // 이 구현은 스프레드 연산자를 사용해 인자로 받은 함수들을
+    // fns라는 배열로 만든다.
+    // 그 후 compose는 arg라는 인자를 받는 함수를 반환한다.
+    // 이렇게 반환된 화살표 함수에 나중에 누군가 인자를 전달해 호출하면,
+    // fns 배열의 reduce함수를 호출하면서 arg로 받은 값이 전달된다.
+    // 참고로, reduce() 메서드는 배열의 각 요소에 대해 주어진
+    // 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환합니다.
+    // 그렇게 arg값은 reduce의 초깃값이 되고 각 이러테이션마다 
+    // 배열의 각 원소(함수)와 이전 값을 변환 함수를 사용해 축약한 값을
+    // 전달한다. 이때, reduce의 변환 함수는 이전 이러테이션의 결과밧임
+    // composed와 f를 인자로 받아서 f에 composed를 적용해 반환한다.
+    // 그렇게 마지막 함수가 호출되며 최종 결과를 반환한다. 
+    const compose = (...fns) => (arg) =>
+      fns.reduce((composed, f) => f(composed), arg);
+
+    const oneFunction = compose(
+      createClockTime,
+      appendAMPM,
+      civilianHours,
+      removeDate
+    );
+
+    console.log(oneFunction(new Date()));
+
+</script>
+</body>
+</html>
